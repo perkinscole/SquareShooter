@@ -2,35 +2,23 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/* Projectile
+ * @author Cole Perkins
+ * The projectile fired by the player.
+ * It is responsible for destroying itself.
+ */
 public class Projectile : MonoBehaviour
 {
-   
 
-    private int playerInt = 1;
-
+    /* OnTriggerEnter2D
+     * This simply destroys the projectile when
+     * colliding with anything.
+     */
     private void OnTriggerEnter2D(Collider2D other)
     {
-   
-        if ((other.gameObject.tag == "Player1" && playerInt == 2)){
             Destroy(this.gameObject);
-        }else if((other.gameObject.tag == "Player2" && playerInt == 1))
-        {
-            Destroy(this.gameObject);
-        }else if(other.gameObject.tag == "Enemy")
-        {
-            GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>().EnemyKilled();
-            Destroy(other.gameObject);
-            Destroy(this.gameObject);
-        }
-        else
-        {
-            Destroy(this.gameObject);
-        }
         
     }
 
-    public void SetPlayerInt(int i)
-    {
-        this.playerInt = i;
-    }
+    
 }
